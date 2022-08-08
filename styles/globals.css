@@ -1,3 +1,11 @@
-html {
+:root {
+  --primary: #B1464A;
+}
+
+html body {
   background-color: #f6f6f6;
+}
+
+a {
+  text-decoration: underline !important;
 }

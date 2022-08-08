@@ -1,25 +1,31 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 
-import { Box, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react';
+import { Box, Flex, Grid, GridItem, Image, Text, useTheme } from '@chakra-ui/react';
 import { RiArrowRightLine } from 'react-icons/ri';
 
 import { Button } from '../components/button';
 
 const Home: NextPage = () => {
+  const theme = useTheme()
+
+  // implementar contexto futuramente
+  const isAuthenticated = false
+
   return (
-    <Box>
+    <Box bgColor='primary'>
       <Head>
         <title>GoFood | Home</title>
-        <meta name="description" content="The Greatest Food Ordering App." />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid
+        margin='0 auto'
         templateColumns='12fr'
         templateRows='1fr 7fr 4fr'
         height="100vh"
         gap={1}
-        bgColor='primary'
+
+        maxW={theme.__breakpoints?.asObject?.md}
       >
         <GridItem px={8} paddingTop={8}>
           <Text fontSize='3xl' color="subtitleLight" fontFamily='pt serif, serif'>gofood</Text>
@@ -45,9 +51,11 @@ const Home: NextPage = () => {
               <Text fontSize='5xl' fontWeight="semibold" align="center" color='titleLight' fontFamily='pt serif, serif'>Go, food!</Text>
               <Text fontSize='lg' align="center" color="subtitleLight" fontFamily='montserrat, sans-serif'>Eat it whenever you want.</Text>
             </Box>
-            <Button w="100%" h="100%" mt={5} color="pLight" bgColor="#d8d8d866" rightIcon={<RiArrowRightLine size={25} />}>
-              Order now
-            </Button>
+            <Link href={isAuthenticated ? 'dashboard' : 'login'}>
+              <Button w="100%" h="100%" mt={5} color="pLight" bgColor="#d8d8d866" rightIcon={<RiArrowRightLine size={25} />}>
+                Order now
+              </Button>
+            </Link>
           </Flex>
         </GridItem>
       </Grid>

@@ -8,7 +8,7 @@ const colors = {
   subtitle: '#4A5568',
   subtitleLight: '#E0E0E0',
   p: '#718096',
-  pLight: '#F6F6F6'
+  pLight: '#F0F0F0'
 }
 
 const theme = extendTheme({
